@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "mocha"
+  },
+  "dependencies": {
+    "inquirer": "^1.0.3"
+  },
+  "devDependencies": {
+    "mocha": "^2.5.3"
+  }
+}
