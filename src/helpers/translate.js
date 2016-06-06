@@ -1,6 +1,8 @@
+const getLocalePath = (locale) => (process.cwd() + '/src/locales/' + locale)
+
 const translate = (locale) => {
   try {
-    const dictionary = require('../locales/' + locale)
+    const dictionary = require(getLocalePath(locale))
   } catch(e) {
     console.log(e)
   }
