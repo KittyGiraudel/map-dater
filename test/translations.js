@@ -16,4 +16,12 @@ describe('Translation', () => {
       assert.notEqual(specification.name, t(specification.name))
     })
   })
+
+  specifications.forEach((specification) => {
+    specification.choices.forEach((choice) => {
+      it('should exist for `' + choice + '`', () => {
+        assert.notEqual(choice, t(choice))
+      })
+    })
+  })
 })
