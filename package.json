@@ -1,4 +1,7 @@
 {
+  "bin": {
+    "map-dater": "./src/index.js"
+  },
   "scripts": {
     "start": "node src/index.js",
     "test": "mocha"
