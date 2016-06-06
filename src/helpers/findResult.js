@@ -2,11 +2,8 @@ const outcomes = require('../data/outcomes')
 const translate = require('./translate')
 const t = translate('en')
 
-const getPossibleOutcomes = () => Object.keys(outcomes)
-const getOutcomeRequirements = (outcome) => Object.keys(outcomes[outcome])
-
 const findResult = (replies) => {
-  const answer = getPossibleOutcomes().filter((outcome) => {
+  const answer = Object.keys(outcomes).find((outcome) => {
     const requirements = outcomes[outcome]
 
     return Object.keys(requirements).every((requirement) => {
@@ -16,11 +13,7 @@ const findResult = (replies) => {
     })
   })
 
-  if (answer.length === 0) {
-    return t('i.error')
-  }
-
-  return t(answer[0])
+  return t(answer || 'i.error')
 }
 
 module.exports = findResult
