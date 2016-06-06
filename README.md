@@ -4,7 +4,9 @@ Map Dater is an interactive command line utility to estimate the age of an undat
 
 It is directly inspired from [xkcd#1688](http://xkcd.com/1688/); full kudos and rights to Randall Munroe.
 
-![Screenshot](http://i.imgur.com/W0B8dTc.png)
+![Screenshot of map-dater in action](http://i.imgur.com/mKb2NkK.png)
+
+![Screenshot of map-dater result](http://i.imgur.com/iJGeTSh.png)
 
 ## Usage
 
