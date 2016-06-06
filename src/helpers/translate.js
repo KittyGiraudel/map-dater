@@ -1,19 +1,20 @@
-const getLocalePath = (locale) => (process.cwd() + '/src/locales/' + locale)
+const IS_DEVELOPMENT = (process.NODE_ENV === 'development')
 
-const translate = (locale) => {
+// Return path to the locale file.
+const getLocalePath = (locale) =>
+  (process.cwd() + '/src/locales/' + locale)
+
+const setLocale = (locale) => {
   try {
     var dictionary = require(getLocalePath(locale))
   } catch(e) {
     console.log(e)
-    var dictionary = {}
   }
 
-
+  // Return the translation mapped to the given key, or the key itself if no
+  // translation found.
   return (key) => {
-    if (
-      typeof dictionary[key] === 'undefined'
-      && process.NODE_ENV === 'development'
-    ) {
+    if (!dictionary[key] && IS_DEVELOPMENT) {
       console.log('Could not find a translation for key `' + key + '` in locale `' + locale + '`')
     }
 
@@ -21,4 +22,4 @@ const translate = (locale) => {
   }
 }
 
-module.exports = translate
+module.exports = setLocale

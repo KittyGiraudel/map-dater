@@ -6,6 +6,18 @@
   },
 
   {
+    "name": "q.ottoman_empire",
+    "choices": ["a.yes", "a.no"],
+    "requirements": { "q.istanbul_constantinople": "a.neither" }
+  },
+
+  {
+    "name": "q.soviet_union_2",
+    "choices": ["a.yes", "a.no"],
+    "requirements": { "q.istanbul_constantinople": "a.istanbul" }
+  },
+
+  {
     "name": "q.canada_alaska_tokyo",
     "choices": ["a.yes", "a.no"],
     "requirements": {
@@ -111,21 +123,9 @@
   },
 
   {
-    "name": "q.ottoman_empire",
-    "choices": ["a.yes", "a.no"],
-    "requirements": { "q.istanbul_constantinople": "a.neither" }
-  },
-
-  {
     "name": "q.soviet_union_1",
     "choices": ["a.yes", "a.no"],
     "requirements": { "q.ottoman_empire": "a.no" }
-  },
-
-  {
-    "name": "q.soviet_union_2",
-    "choices": ["a.yes", "a.no"],
-    "requirements": { "q.istanbul_constantinople": "a.istanbul" }
   },
 
   {

@@ -1,6 +1,5 @@
 const specifications = require('../data/specifications')
-const translate = require('./translate')
-const t = translate('en')
+const t = require('./translate')('en')
 
 // Check whether given requirements are being satisfied.
 const isSatisfyingRequirements = (requirements, replies) =>
@@ -9,7 +8,8 @@ const isSatisfyingRequirements = (requirements, replies) =>
   })
 
 // Check whether the question is the root of the tree.
-const isRoot = (requirements) => (Object.keys(requirements).length === 0)
+const isRoot = (requirements) =>
+  (Object.keys(requirements).length === 0)
 
 // Build a proper array of choices objects for `inquirer`.
 const getChoices = (choices) =>
@@ -18,15 +18,18 @@ const getChoices = (choices) =>
     name: t(choice)
   }))
 
-// Enhance the specifications to give everything needed to `inquirer`.
-const properties = specifications.map((spec) => Object.assign({}, spec, {
-  choices: getChoices(spec.choices),
-  message: t(spec.name),
-  type: 'list',
-  when: (replies) => (
-    isRoot(spec.requirements) ||
-    isSatisfyingRequirements(spec.requirements, replies)
-  )
-}))
+// Whether or not a question should be asked based on requirements and existing
+// replies.
+const shouldAsk = (requirements, replies) =>
+  isRoot(requirements) || isSatisfyingRequirements(requirements, replies)
 
-module.exports = properties
+// Enhance an entry specification to provide everything needed to `inquirer`.
+const completeSpecification = (spec) =>
+  Object.assign({}, spec, {
+    choices: getChoices(spec.choices),
+    message: t(spec.name),
+    type: 'list',
+    when: (replies) => shouldAsk(spec.requirements, replies)
+  })
+
+module.exports = specifications.map(completeSpecification)
