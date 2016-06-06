@@ -1,5 +1,4 @@
-const prompt = require('prompt')
-const specifications = require('../data/spec')
+const specifications = require('../data/specifications')
 const translate = require('./translate')
 const t = translate('en')
 
@@ -10,19 +9,18 @@ const isSatisfyingRequirements = (requirements, replies) =>
   })
 
 // Check whether the question is the root of the tree.
-const isRoot = (requirements) =>
-  Object.keys(requirements).length === 0
+const isRoot = (requirements) => (Object.keys(requirements).length === 0)
 
-// Build a proper array of answer objects for `inquirer`.
-const getChoices = (answers) =>
-  answers.map((answer) => ({
-    value: answer,
-    name: t(answer)
+// Build a proper array of choices objects for `inquirer`.
+const getChoices = (choices) =>
+  choices.map((choice) => ({
+    value: choice,
+    name: t(choice)
   }))
 
 // Enhance the specifications to give everything needed to `inquirer`.
-const properties = specifications.map((spec) => Object.assign(spec, {
-  choices: getChoices(spec.answers),
+const properties = specifications.map((spec) => Object.assign({}, spec, {
+  choices: getChoices(spec.choices),
   message: t(spec.name),
   type: 'list',
   when: (replies) => (

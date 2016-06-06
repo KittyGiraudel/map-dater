@@ -1,13 +1,13 @@
 [
   {
     "name": "q.istanbul_constantinople",
-    "answers": ["a.constantinople", "a.istanbul", "a.neither"],
+    "choices": ["a.constantinople", "a.istanbul", "a.neither"],
     "requirements": {}
   },
 
   {
     "name": "q.canada_alaska_tokyo",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": {
       "q.istanbul_constantinople": "a.constantinople",
       "q.ottoman_empire": "a.yes"
@@ -16,211 +16,211 @@
 
   {
     "name": "q.holy_roman_empire",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.canada_alaska_tokyo": "a.no" }
   },
 
   {
     "name": "q.united_states",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.holy_roman_empire": "a.no" }
   },
 
   {
     "name": "q.texas",
-    "answers": ["a.part_of_mexico", "a.independant", "a.part_of_us"],
+    "choices": ["a.part_of_mexico", "a.independant", "a.part_of_us"],
     "requirements": { "q.united_states": "a.yes" }
   },
 
   {
     "name": "q.florida",
-    "answers": ["a.part_of_spain", "a.part_of_us"],
+    "choices": ["a.part_of_spain", "a.part_of_us"],
     "requirements": { "q.texas": "a.part_of_mexico" }
   },
 
   {
     "name": "q.paraguay",
-    "answers": ["a.yes", "a.no"],
-    "requirements": { "q.florida": "a.spain" }
+    "choices": ["a.yes", "a.no"],
+    "requirements": { "q.florida": "a.part_of_spain" }
   },
 
   {
     "name": "q.venezuela_equador",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.florida": "a.part_of_us" }
   },
 
   {
     "name": "q.russia_sea_japan",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.texas": "a.part_of_us" }
   },
 
   {
     "name": "q.us_southern_border",
-    "answers": ["a.weird", "a.flat"],
+    "choices": ["a.weird", "a.flat"],
     "requirements": { "q.russia_sea_japan": "a.no" }
   },
 
   {
     "name": "q.south_africa",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.canada_alaska_tokyo": "a.yes" }
   },
 
   {
     "name": "q.rhodesia",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.south_africa": "a.no" }
   },
 
   {
     "name": "q.bolivia_landblocked",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.rhodesia": "a.no" }
   },
 
   {
     "name": "q.buda_pest_budapest",
-    "answers": ["Buda Pest", "Budapest"],
+    "choices": ["a.buda_pest", "a.budapest"],
     "requirements": { "q.bolivia_landblocked": "a.no" }
   },
 
   {
     "name": "q.norway_in_sweden",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.rhodesia": "a.yes" }
   },
 
   {
     "name": "q.austria_hungary",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.south_africa": "a.yes" }
   },
 
   {
     "name": "q.albania",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.austria_hungary": "a.yes" }
   },
 
   {
     "name": "q.leningrad",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.austria_hungary": "a.no" }
   },
 
   {
     "name": "q.ottoman_empire",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.istanbul_constantinople": "a.neither" }
   },
 
   {
     "name": "q.soviet_union_1",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.ottoman_empire": "a.no" }
   },
 
   {
     "name": "q.soviet_union_2",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.istanbul_constantinople": "a.istanbul" }
   },
 
   {
     "name": "q.west_africa",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.soviet_union_2" : "a.yes" }
   },
 
   {
     "name": "q.pakistan",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.west_africa" : "a.yes" }
   },
 
   {
     "name": "q.how_many_germany",
-    "answers": ["a.one", "a.one_huge", "a.two"],
+    "choices": ["a.one", "a.one_huge", "a.two"],
     "requirements": { "q.pakistan" : "a.no" }
   },
 
   {
     "name": "q.persia_iran",
-    "answers": ["a.persia", "a.iran"],
+    "choices": ["a.persia", "a.iran"],
     "requirements": { "q.how_many_germany" : "a.one" }
   },
 
   {
     "name": "q.cambodia",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.pakistan" : "a.yes" }
   },
 
   {
     "name": "q.saudi_arabia",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.soviet_union_1": "a.yes" }
   },
 
   {
     "name": "q.aral_sea_missing",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.lake_chad_missing": "a.yes" }
   },
 
   {
     "name": "q.north_korea",
-    "answers": ["a.yes", "a.no"],
-    "requirements": { "q.soviet_union": "a.no" }
+    "choices": ["a.yes", "a.no"],
+    "requirements": { "q.soviet_union_1": "a.no" }
   },
 
   {
     "name": "q.saint_trimbles_island",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.north_korea": "a.no" }
   },
 
   {
     "name": "q.kingdom_of_norway",
-    "answers": ["a.what", "a.yes", "a.not_yet"],
+    "choices": ["a.what", "a.yes", "a.not_yet"],
     "requirements": { "q.saint_trimbles_island": "a.no" }
   },
 
   {
     "name": "q.familiar_continents",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.kingdom_of_norway": "a.what" }
   },
 
   {
     "name": "q.physical_map_satellite_photo",
-    "answers": ["a.yes"],
+    "choices": ["a.yes"],
     "requirements": { "q.familiar_continents": "a.yes" }
   },
 
   {
     "name": "q.lake_chad_missing",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.physical_map_satellite_photo": "a.yes" }
   },
 
   {
     "name": "q.american_prairies",
-    "answers": ["a.indiana", "a.mississippi", "a.nebraska", "a.what_prairies"],
+    "choices": ["a.indiana", "a.mississippi", "a.nebraska", "a.what_prairies"],
     "requirements": { "q.lake_chad_missing": "a.no" }
   },
 
   {
     "name": "q.lake_southern_carolina",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.american_prairies": "a.nebraska" }
   },
 
   {
     "name": "q.lake_ghana",
-    "answers": ["a.yes", "a.no"],
+    "choices": ["a.yes", "a.no"],
     "requirements": { "q.american_prairies": "a.what_prairies" }
   }
 ]
