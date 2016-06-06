@@ -9,9 +9,8 @@ It is directly inspired from [xkcd#1688](http://xkcd.com/1688/); full kudos and 
 ## Usage
 
 ```
-git clone git@github.com:HugoGiraudel/map-dater
-cd map-dater
-npm start
+npm install HugoGiraudel/map-dater -g
+map-dater
 ```
 
 ## Test
