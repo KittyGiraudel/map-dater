@@ -1,4 +1,5 @@
 {
+  "name": "map-dater",
   "bin": {
     "map-dater": "./src/index.js"
   },
