@@ -129,15 +129,117 @@
   },
 
   {
+    "name": "q.zaire",
+    "choices": ["a.yes", "a.no"],
+    "requirements": {
+      "q.soviet_union_2": "a.no",
+      "q.north_korea": "a.yes"
+    }
+  },
+
+  {
+    "name": "q.serbia_montenegro",
+    "choices": ["a.one_country", "a.two_countries"],
+    "requirements": { "q.zaire": "a.no" }
+  },
+
+  {
+    "name": "q.east_timor",
+    "choices": ["a.yes", "a.no"],
+    "requirements": { "q.serbia_montenegro": "a.one_country" }
+  },
+
+  {
+    "name": "q.how_many_sudan",
+    "choices": ["a.one", "a.two"],
+    "requirements": { "q.serbia_montenegro": "a.two_countries" }
+  },
+
+  {
+    "name": "q.crimea_disputed",
+    "choices": ["a.one", "a.two"],
+    "requirements": { "q.how_many_sudan": "a.two" }
+  },
+
+  {
+    "name": "q.colorado",
+    "choices": ["a.colorado", "a.danger_zone"],
+    "requirements": { "q.crimea_disputed": "a.yes" }
+  },
+
+  {
+    "name": "q.spiders",
+    "choices": ["a.yes", "a.no"],
+    "requirements": { "q.colorado": "a.danger_zone" }
+  },
+
+  {
     "name": "q.west_africa",
     "choices": ["a.yes", "a.no"],
     "requirements": { "q.soviet_union_2" : "a.yes" }
   },
 
   {
+    "name": "q.how_many_vietnam",
+    "choices": ["a.one", "a.two"],
+    "requirements": { "q.west_africa" : "a.no" }
+  },
+
+  {
+    "name": "q.bangladesh",
+    "choices": ["a.yes", "a.no"],
+    "requirements": { "q.how_many_vietnam" : "a.two" }
+  },
+
+  {
+    "name": "q.jimmy_carter",
+    "choices": ["a.swimming_rabbit", "a.fine"],
+    "requirements": { "q.how_many_vietnam" : "a.one" }
+  },
+
+  {
+    "name": "q.sinai",
+    "choices": ["a.israel", "a.mostly_israel", "a.mostly_egypt", "a.egypt"],
+    "requirements": { "q.jimmy_carter" : "a.fine" }
+  },
+
+  {
+    "name": "q.capital_micronesia",
+    "choices": ["a.kolonia", "a.palakir"],
+    "requirements": { "q.sinai" : "a.egypt" }
+  },
+
+  {
+    "name": "q.upper_volta_burkina_faso",
+    "choices": ["a.upper_volta", "a.burkina_faso"],
+    "requirements": { "q.capital_micronesia" : "a.kolonia" }
+  },
+
+  {
+    "name": "q.sum_yemen_germany",
+    "choices": ["a.four", "a.three", "a.two"],
+    "requirements": { "q.capital_micronesia" : "a.palakir" }
+  },
+
+  {
+    "name": "q.south_lake_victoria",
+    "choices": ["a.british", "a.tanganyika", "a.tanzania"],
+    "requirements": { "q.bangladesh" : "a.no" }
+  },
+
+  {
+    "name": "q.town_albuquerque_el_paso",
+    "choices": ["a.hot_springs", "a.truth_or_consequences"],
+    "requirements": { "q.south_lake_victoria" : "a.british" }
+  },
+
+  {
     "name": "q.pakistan",
     "choices": ["a.yes", "a.no"],
-    "requirements": { "q.west_africa" : "a.yes" }
+    "requirements": {
+      "q.west_africa" : "a.yes",
+      "q.kingdom_of_norway": "a.yes"
+    }
   },
 
   {
@@ -156,6 +258,24 @@
     "name": "q.cambodia",
     "choices": ["a.yes", "a.no"],
     "requirements": { "q.pakistan" : "a.yes" }
+  },
+
+  {
+    "name": "q.eritrea",
+    "choices": ["a.part_of_italy", "a.part_of_ethiopia"],
+    "requirements": { "q.cambodia" : "a.no" }
+  },
+
+  {
+    "name": "q.canada",
+    "choices": ["a.missing_a_piece", "a.fine"],
+    "requirements": { "q.eritrea" : "a.part_of_italy" }
+  },
+
+  {
+    "name": "q.united_arab_republic",
+    "choices": ["a.yes", "a.no"],
+    "requirements": { "q.cambodia" : "a.yes" }
   },
 
   {
@@ -192,6 +312,114 @@
     "name": "q.familiar_continents",
     "choices": ["a.yes", "a.no"],
     "requirements": { "q.kingdom_of_norway": "a.what" }
+  },
+
+  {
+    "name": "q.sirion_anduin",
+    "choices": ["a.yes", "a.no"],
+    "requirements": { "q.familiar_continents": "a.no" }
+  },
+
+  {
+    "name": "q.mordor",
+    "choices": ["a.yes", "a.no"],
+    "requirements": { "q.sirion_anduin": "a.yes" }
+  },
+
+  {
+    "name": "q.beleriand",
+    "choices": ["a.yes", "a.no"],
+    "requirements": { "q.mordor": "a.no" }
+  },
+
+  {
+    "name": "q.numenor",
+    "choices": ["a.yes", "a.no"],
+    "requirements": { "q.mordor": "a.yes" }
+  },
+
+  {
+    "name": "q.east_misty_mountains",
+    "choices": ["a.greenwood_the_great", "a.mirkwood", "a.wood_of_greenleaves"],
+    "requirements": { "q.numenor": "a.no" }
+  },
+
+  {
+    "name": "q.cair_paravel",
+    "choices": ["a.yes", "a.no"],
+    "requirements": { "q.sirion_anduin": "a.no" }
+  },
+
+  {
+    "name": "q.calormen",
+    "choices": ["a.yes", "a.no"],
+    "requirements": { "q.cair_paravel": "a.yes" }
+  },
+
+  {
+    "name": "q.weird_recursive_heaven",
+    "choices": ["a.yes", "a.no"],
+    "requirements": { "q.calormen": "a.yes" }
+  },
+
+  {
+    "name": "q.lotta_islands",
+    "choices": ["a.yes", "a.no"],
+    "requirements": { "q.calormen": "a.no" }
+  },
+
+  {
+    "name": "q.beruna",
+    "choices": ["a.yes", "a.no"],
+    "requirements": { "q.lotta_islands": "a.no" }
+  },
+
+  {
+    "name": "q.mossflower",
+    "choices": ["a.yes", "a.no"],
+    "requirements": { "q.cair_paravel": "a.no" }
+  },
+
+  {
+    "name": "q.back_of_turtle",
+    "choices": ["a.yes", "a.no"],
+    "requirements": { "q.mossflower": "a.no" }
+  },
+
+  {
+    "name": "q.is_this_a_map",
+    "choices": ["a.yes", "a.no"],
+    "requirements": { "q.back_of_turtle": "a.no" }
+  },
+
+  {
+    "name": "q.diy",
+    "choices": ["a.yes", "a.no"],
+    "requirements": { "q.is_this_a_map": "a.yes" }
+  },
+
+  {
+    "name": "q.is_it_biting",
+    "choices": ["a.yes", "a.no"],
+    "requirements": { "q.is_this_a_map": "a.no" }
+  },
+
+  {
+    "name": "q.is_it_larger_than_breadbox",
+    "choices": ["a.yes", "a.no", "a.about_the_same"],
+    "requirements": { "q.is_it_biting": "a.no" }
+  },
+
+  {
+    "name": "q.what_if_you_let_go",
+    "choices": ["a.hisses_runs_away", "a.screeches_flaps"],
+    "requirements": { "q.is_it_biting": "a.yes" }
+  },
+
+  {
+    "name": "q.very_nice",
+    "choices": ["a.yes", "a.no"],
+    "requirements": { "q.back_of_turtle": "a.no" }
   },
 
   {
