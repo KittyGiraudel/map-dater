@@ -1,23 +1,20 @@
 const assert = require('assert')
 const specifications = require('../src/data/specifications')
+const utils = require('./utils')
 
-const isObject = (value) => (typeof value === 'object' && value !== null)
+const hasValidName = (specification) =>
+  utils.hasValidQuestionName(specification.name)
 
-const hasValidName = (specification) => (
-  typeof specification.name === 'string'
-  && specification.name.slice(0, 2) === 'q.')
+const hasValidChoices = (specification) =>
+  utils.isArray(specification.choices)
+  && specification.choices.every(utils.hasValidChoiceName)
 
-const hasValidChoices = (specification) => (
-  Array.isArray(specification.choices)
-    && specification.choices.every((choice) => (
-      typeof choice === 'string' && choice.slice(0, 2) === 'a.'
-    )))
-
-const hasValidRequirements = (specification) => isObject(specification.requirements)
+const hasValidRequirements = (specification) =>
+  utils.isObject(specification.requirements)
 
 describe('Specifications', () => {
   it('should all be objects', () => {
-    assert.ok(specifications.every(isObject))
+    assert.ok(specifications.every(utils.isObject))
   })
 
   it('should all have a `name` key starting with `q.`', () => {

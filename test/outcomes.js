@@ -1,73 +1,62 @@
 const assert = require('assert')
 const specifications = require('../src/data/specifications')
 const outcomes = require('../src/data/outcomes')
-const outcomesSpec = require('./outcomes-spec')
+const utils = require('./utils')
 
-const isContained = (a, b) => Object
-  .keys(b)
-  .every((key) => a[key] === b[key])
+// Find matching spec with `name` key matching first key of `object`.
+const findSpec = (object) =>
+  specifications.find((specification) =>
+    specification.name === utils.getFirstKey(object))
 
-const getEntryName = (entry) =>
-  Object.keys(entry)[0]
-
-const findSpec = (entry) =>
-  specifications.find((specification) => specification.name === getEntryName(entry))
-
-const isRoot = (spec) =>
-  Object.keys(spec.requirements).length === 0
-
+// Check whether a requirement is fulfilled based on the previous specification.
 const isRequirementFulfilled = (requirement, previousSpec) => (
-  isRoot(previousSpec)
-  || isContained(previousSpec.requirements, requirement)
+  !utils.hasRequirements(previousSpec)
+  || utils.isObjectContained(previousSpec.requirements, requirement)
 )
 
-const stringifyPath = (path) => path.map(JSON.stringify).join(' > ')
-
+// Test whether it’s possible to reach `expect` with `path`.
 const testPath = (path, expect) => {
   if (typeof outcomes[expect] === 'undefined') {
-    throw new Error(expect + ' cannot be an outcome.')
+    return false
   }
 
-  var previousSpec = findSpec(outcomes[expect])
-  const actualPath = path.reverse().slice(1)
+  var spec = findSpec(outcomes[expect].pop())
 
-  actualPath.forEach((requirement) => {
-    const isFulfilled = isRequirementFulfilled(requirement, previousSpec)
-
-    if (!isFulfilled) throw new Error(
-      'Cannot come to '
-      + JSON.stringify(previousSpec.requirements)
-      + ' from '
-      + JSON.stringify(requirement)
-    )
-
-    previousSpec = findSpec(requirement)
+  return path.reverse().every((requirement) => {
+    const previousSpec = spec
+    spec = findSpec(requirement)
+    return isRequirementFulfilled(requirement, previousSpec)
   })
+}
+
+// Check whether an outcome is reachable at all, that is has a connection up to
+// the root entry.
+const isOutcomeReachable = (outcome) => {
+  const path = outcomes[outcome]
+  const endPath = path[path.length - 1]
+  var spec = findSpec(endPath)
+
+  while (utils.hasRequirements(spec)) {
+    spec = findSpec(spec.requirements)
+  }
+
+  return true
 }
 
 describe('Outcome', () => {
   it('should have a key starting with `o.`', () => {
-    assert.ok(Object.keys(outcomes).every((outcome) => {
-      return typeof outcome === 'string'
-        && outcome.slice(0, 2) === 'o.'
-    }))
+    assert.ok(Object.keys(outcomes).every(utils.hasValidOutcomeName))
   })
 
   Object.keys(outcomes).forEach((outcome) => {
-    it('Outcome `' + outcome + '` should be reachable', () => {
-      var question = findSpec(outcomes[outcome])
-
-      while (Object.keys(question.requirements).length > 0) {
-        question = findSpec(question.requirements)
-      }
-
-      assert.equal(Object.keys(question.requirements).length, 0)
+    it('`' + outcome + '` should be reachable', () => {
+      assert.ok(isOutcomeReachable(outcome))
     })
   })
 
-  Object.keys(outcomesSpec).forEach((spec) => {
-    it('should return `' + spec + '` for path: ' + stringifyPath(outcomesSpec[spec]), () => {
-      assert.doesNotThrow(() => testPath(outcomesSpec[spec], spec))
+  Object.keys(outcomes).forEach((outcome) => {
+    it('should return `' + outcome + '` for its path', () => {
+      assert.ok(testPath(outcomes[outcome], outcome))
     })
   })
 })

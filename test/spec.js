@@ -1,15 +1,15 @@
 const assert = require('assert')
 const outcomes = require('../src/data/outcomes')
 const spec = require('../src/helpers/spec')
+const utils = require('./utils')
 
-const isObject = (value) => (typeof value === 'object' && value !== null)
 const hasListType = (o) => (o.type === 'list')
-const hasWhenFunction = (o) => (typeof o.when === 'function')
-const hasValidMessage = (o) => (typeof o.message === 'string')
+const hasWhenFunction = (o) => utils.isFunction(o.when)
+const hasValidMessage = (o) => utils.isString(o.message)
 
 describe('The spec builder', () => {
   it('should return an array of objects', () => {
-    assert.ok(spec.every(isObject))
+    assert.ok(spec.every(utils.isObject))
   })
 
   it('should return objects with a `type` key set to `list`', () => {
