@@ -24,7 +24,7 @@ const hasValidQuestionName = (value) =>
   isString(value) && value.slice(0, 2) === 'q.'
 
 const hasValidChoiceName = (value) =>
-  isString(value) && value.slice(0, 2) === 'a.'
+  isString(value) && value.slice(0, 2) === 'c.'
 
 const getFirstKey = (object) =>
   Object.keys(object)[0]

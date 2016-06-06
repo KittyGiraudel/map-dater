@@ -21,7 +21,7 @@ describe('Specifications', () => {
     assert.ok(specifications.every(hasValidName))
   })
 
-  it('should all have a `choices` key containing an array of choices starting with `a.`', () => {
+  it('should all have a `choices` key containing an array of choices starting with `c.`', () => {
     assert.ok(specifications.every(hasValidChoices))
   })
 
