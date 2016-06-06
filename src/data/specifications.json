@@ -58,7 +58,7 @@
 
   {
     "name": "q.us_southern_border",
-    "choices": ["a.weird", "a.flat"],
+    "choices": ["a.weird", "a.normal"],
     "requirements": { "q.russia_sea_japan": "a.no" }
   },
 
@@ -176,7 +176,10 @@
   {
     "name": "q.west_africa",
     "choices": ["a.yes", "a.no"],
-    "requirements": { "q.soviet_union_2" : "a.yes" }
+    "requirements": {
+      "q.saudi_arabia": "a.yes",
+      "q.soviet_union_2" : "a.yes"
+    }
   },
 
   {
@@ -205,7 +208,7 @@
 
   {
     "name": "q.capital_micronesia",
-    "choices": ["a.kolonia", "a.palakir"],
+    "choices": ["a.kolonia", "a.palikir"],
     "requirements": { "q.sinai" : "a.egypt" }
   },
 
@@ -218,7 +221,7 @@
   {
     "name": "q.sum_yemen_germany",
     "choices": ["a.four", "a.three", "a.two"],
-    "requirements": { "q.capital_micronesia" : "a.palakir" }
+    "requirements": { "q.capital_micronesia" : "a.palikir" }
   },
 
   {
