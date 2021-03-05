@@ -13,7 +13,7 @@ It is directly inspired from [xkcd#1688](http://xkcd.com/1688/); full kudos and 
 ## Usage
 
 ```
-npm install HugoGiraudel/map-dater -g
+npm install KittyGiraudel/map-dater -g
 map-dater
 ```
 
