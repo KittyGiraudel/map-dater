@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "chalk": "^4.1.0",
-    "inquirer": "^1.0.3"
+    "inquirer": "^8.2.1"
   },
   "devDependencies": {
     "mocha": "^8.3.2"
